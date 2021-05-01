@@ -6,7 +6,9 @@
  # Last modified: 2021-05-01 12:26:33
 #########################################################################
 #!/bin/bash
+
+
 git add .
-git commit -m  "[new]"
+git commit -m  "[new] $0"
 git push 
 
