@@ -8,12 +8,17 @@ permalink: /tags/
   <h2>No post found</h2>
 {% endif %}
 
+<style type="text/css">
+span{
+    color:green;
+}
+
 <div class="tags">
   <ul class="label">
     {% for tag in site.tags %}
     <li>
       <a href="#{{ tag[0] }}">
-        <span>{{ tag[0] }}</span>
+        <span >{{ tag[0] }}</span>
         <span class="count">{{ tag[1] | size }}</span>
       </a>
     </li>
