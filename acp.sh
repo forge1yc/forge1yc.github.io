@@ -9,6 +9,6 @@
 
 
 git add .
-git commit -m  "[new] $0"
+git commit -m  "[new] $1"
 git push 
 
