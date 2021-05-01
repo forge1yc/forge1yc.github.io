@@ -4,6 +4,7 @@ title: About
 permalink: /about/
 ---
 
+
 Hi，我是 forge1yc.
 
 ### 技能
