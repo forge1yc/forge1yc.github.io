@@ -1,29 +1,43 @@
 <div class="wrapper-sidebar">
-  <header class="sidebar clearfix">
-    <div class="site-info">
-      {% if site.avatar %}
-        <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-      {% endif %} 
-      <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-      <p class="site-description">{{ site.description }}</p>
+    <header class="sidebar clearfix">
+        <div class="site-info">
+            {% if site.avatar %}
+            <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+            {% endif %}
+            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+            <p class="site-description">{{ site.description }}</p>
+        </div>
+    </header>
+
+    <div class="navlist">
+        <nav>
+            {% for nav in site.navigation %}
+            {% if nav.url contains 'http://' or nav.url contains 'https://' %}
+            <a href="{{ nav.url }}">{{ nav.name }}</a>
+            {% else %}
+            <a href="{{ site.baseurl }}{{ nav.url }}">{{ nav.name }}</a>
+            {% endif %}
+            {% endfor %}
+        </nav>
     </div>
-  </header>
 
-  <div class="navlist">
-    <nav>
-      {% for nav in site.navigation %}
-      {% if nav.url contains 'http://' or nav.url contains 'https://' %}
-      <a href="{{ nav.url }}">{{ nav.name }}</a>
-      {% else %}
-      <a href="{{ site.baseurl }}{{ nav.url }}">{{ nav.name }}</a>
-      {% endif %}
-      {% endfor %}
-    </nav>
-  </div>
+    <div class="wrapper-footer-desktop">
+        <footer class="footer">
+            {% include footer.html %}
+        </footer>
+    </div>
+</div>
 
-  <div class="wrapper-footer-desktop">
-    <footer class="footer">
-      {% include footer.html %}
-    </footer>
-  </div>
+<!--不算子网站访客统计-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<!-- pv的方式，单个用户连续点击n篇文章，记录n次访问量 -->
+<div align="center">
+    <span id="busuanzi_container_site_pv" style="font-family:Consolas;color:Silver;font-size:12px;">
+        View:<span id="busuanzi_value_site_pv" style="font-family:Consolas;color:Silver;font-size:12px;"></span>
+    </span>
+    <!-- uv的方式，单个用户连续点击n篇文章，只记录1次访客数 -->
+    <span id="busuanzi_container_site_uv" style="font-family:Consolas;color:Silver;font-size:12px;">
+        User:<span id="busuanzi_value_site_uv" style="font-family:Consolas;color:Silver;font-size:12px;"></span>
+    </span>
 </div>
