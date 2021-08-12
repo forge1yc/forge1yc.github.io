@@ -1,0 +1,24 @@
+@startuml
+participant main as m 
+participant CloudConfig as acs 
+participant SimpleEngine as eng
+
+m -> acs : 遍历规则,构造规则入参数请求创建ConfigRule 
+acs -> m : 回传正在运行的ConfigRuleId
+
+m -> acs : 根据ConfigRuleId,轮询等待ConfigRule评估结束
+activate acs 
+acs -> m : 评估结束
+deactivate acs 
+
+m -> acs : 根据ConfigRuleId获取被评估的结果
+acs -> m : 返回被评估的结果(资源id、类型、region、合规结果)数组
+
+m -> acs : 根据JSONPath拿取相应的资源的实际属性值
+acs -> m : 返回实际值
+
+m -> eng : 传入定义的操作符、期望值、实际值、实际评估结果 
+eng -> eng : 判断实际是否与预期一致
+eng -> m : 返回校验结果
+
+@enduml
